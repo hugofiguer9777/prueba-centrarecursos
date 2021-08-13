@@ -1,4 +1,7 @@
 <?php
+
+session_start();
+
 $serverName = "FIGUEROA-OMEN\SQLEXPRESS"; //serverName\instanceName
 
 // Puesto que no se han especificado UID ni PWD en el array  $connectionInfo,

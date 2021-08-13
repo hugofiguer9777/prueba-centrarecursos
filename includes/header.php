@@ -7,11 +7,13 @@
     <title>Control de Vacunacion COVID-19</title>
     <!-- BOOTSTRAP -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <!-- FONTAWESOME -->
+    <script src="https://kit.fontawesome.com/5ded455e82.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
 <nav class="navbar navbar-dark bg-dark">
     <div class="container">
-        <a href="index.php" class="navbar-brand">Vacunacion COVID-19</a>
+        <a href="index.php" class="navbar-brand">Vacunación COVID-19</a>
     </div>
 </nav>
