@@ -1,5 +1,3 @@
-CREATE SCHEMA `vacunacioncentrarecursos` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ;
-
 USE vacunacioncentrarecursos;
 
 CREATE TABLE usuario (
@@ -14,7 +12,7 @@ CREATE TABLE usuario (
 
 TRUNCATE TABLE usuario;
 
-Go
+GO
 CREATE PROCEDURE UsuariosProc(@id_usuario INTEGER = 0, @nombre NVARCHAR(100) = '', @puesto_laboral NVARCHAR(100) = '', @vacuna_administrada NVARCHAR(100) = '', @fecha_primer_dosis DATETIME = '', @estado_vacunacion NVARCHAR(25) = '', @StatementType NVARCHAR(20) = '')
 AS BEGIN
 	Declare @segunda_dosis as DATETIME
