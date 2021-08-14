@@ -36,10 +36,7 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <input type="text" name="fecha_primer_dosis" class="form-control" placeholder="Fecha primera dosis">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" name="fecha_segunda_dosis" class="form-control" placeholder="Fecha segunda dosis">
+                        <input type="text" name="fecha_primer_dosis" class="form-control" placeholder="Fecha primera dosis (YYYY/MM/dd)">
                     </div>
                     <div class="form-group">
                         <select class="form-select" name="estado_vacunacion">
@@ -69,7 +66,7 @@
                 </thead>
                 <tbody>
                     <?php 
-                    $query = "SELECT * FROM usuario";
+                    $query = "EXEC UsuariosProc @StatementType = 'Select'";
                     $result = sqlsrv_query($conn, $query);
 
                     if (!$result) {
@@ -81,8 +78,8 @@
                             <td><?php echo $fila['nombre'] ?></td>
                             <td><?php echo $fila['puesto_laboral'] ?></td>
                             <td><?php echo $fila['vacuna_administrada'] ?></td>
-                            <td><?php echo $fila['fecha_primer_dosis'] ?></td>
-                            <td><?php echo $fila['fecha_segunda_dosis'] ?></td>
+                            <td><?php echo $fila['fecha_primer_dosis']->format('Y/m/d'); ?></td>
+                            <td><?php echo $fila['fecha_segunda_dosis']->format('Y/m/d'); ?></td>
                             <td><?php echo $fila['estado_vacunacion'] ?></td>
                             <td>
                                 <a href="edit.php?id=<?php echo $fila['id_usuario'] ?>" class="btn btn-secondary"><i class="fas fa-edit"></i></a>

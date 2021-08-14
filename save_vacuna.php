@@ -7,16 +7,14 @@ if (isset($_POST['guardar_vacuna'])) {
     $puesto = $_POST['puesto_laboral'];
     $vacuna = $_POST['vacuna_administrada'];
     $primera_dosis = $_POST['fecha_primer_dosis'];
-    $segunda_dosis = $_POST['fecha_segunda_dosis'];
     $estado = $_POST['estado_vacunacion'];
     // echo $nombre;
     // echo $puesto;
     // echo $vacuna;
     // echo $primera_dosis;
-    // echo $segunda_dosis;
     // echo $estado;
 
-    $query = "INSERT INTO usuario(nombre, puesto_laboral, vacuna_administrada, fecha_primer_dosis, fecha_segunda_dosis, estado_vacunacion) VALUES('$nombre','$puesto','$vacuna','$primera_dosis','$segunda_dosis','$estado')";
+    $query = "EXEC UsuariosProc @nombre = '$nombre', @puesto_laboral = '$puesto', @vacuna_administrada = '$vacuna', @fecha_primer_dosis = '$primera_dosis', @estado_vacunacion = '$estado', @StatementType = 'Insert'";
     $result = sqlsrv_query($conn, $query);
 
     if (!$result) {

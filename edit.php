@@ -4,7 +4,7 @@ include("db.php");
 
 if(isset($_GET['id'])) {
     $id = $_GET['id'];
-    $query = "SELECT * FROM usuario WHERE id_usuario = $id";
+    $query = "EXEC UsuariosProc @id_usuario = '$id', @StatementType = 'Detail'";
     $result = sqlsrv_query($conn, $query);
 
     if ($result) {
@@ -12,8 +12,8 @@ if(isset($_GET['id'])) {
         $nombre = $result['nombre'];
         $puesto = $result['puesto_laboral'];
         $vacuna = $result['vacuna_administrada'];
-        $primera_dosis = $result['fecha_primer_dosis'];
-        $segunda_dosis = $result['fecha_segunda_dosis'];
+        $primera_dosis = $result['fecha_primer_dosis']->format('Y/m/d');
+        $segunda_dosis = $result['fecha_segunda_dosis']->format('Y/m/d');;
         $estado = $result['estado_vacunacion'];
     }
 }
@@ -22,12 +22,9 @@ if(isset($_POST['editar_vacuna'])) {
     $id = $_GET['id'];
     $nombre = $_POST['nombre'];
     $puesto = $_POST['puesto_laboral'];
-    $vacuna = $_POST['vacuna_administrada'];
-    $primera_dosis = $_POST['fecha_primer_dosis'];
-    $segunda_dosis = $_POST['fecha_segunda_dosis'];
     $estado = $_POST['estado_vacunacion'];
 
-    $query = "UPDATE usuario SET nombre = '$nombre', puesto_laboral = '$puesto', vacuna_administrada = '$vacuna', fecha_primer_dosis = '$primera_dosis', fecha_segunda_dosis = '$segunda_dosis', estado_vacunacion = '$estado' WHERE id_usuario = $id";
+    $query = "EXEC UsuariosProc @id_usuario = '$id', @nombre = '$nombre', @puesto_laboral = '$puesto', @estado_vacunacion = '$estado', @StatementType = 'Update'";
     $result = sqlsrv_query($conn, $query);
 
     if (!$result) {
@@ -56,21 +53,13 @@ if(isset($_POST['editar_vacuna'])) {
                         <input type="text" name="puesto_laboral" value="<?php echo $puesto; ?>" class="form-control" placeholder="Puesto laboral">
                     </div>
                     <div class="form-group">
-                        <select class="form-select" name="vacuna_administrada">
-                            <option selected><?php echo $vacuna; ?></option>
-                            <option value="Sinopharm">Sinopharm</option>
-                            <option value="AstraZeneca">AstraZeneca</option>
-                            <option value="Sputnik V">Sputnik V</option>
-                            <option value="Pfizer">Pfizer</option>
-                            <option value="Moderna">Moderna</option>
-                            <option value="Janssen">Janssen</option>
-                        </select>
+                        <input type="text" name="vacuna_administrada" value="<?php echo $vacuna; ?>" class="form-control" placeholder="Puesto laboral" readonly>
                     </div>
                     <div class="form-group">
-                        <input type="text" name="fecha_primer_dosis" value="<?php echo $primera_dosis; ?>" class="form-control" placeholder="Fecha primera dosis">
+                        <input type="text" name="fecha_primer_dosis" value="<?php echo $primera_dosis; ?>" class="form-control" placeholder="Fecha primera dosis" readonly>
                     </div>
                     <div class="form-group">
-                        <input type="text" name="fecha_segunda_dosis" value="<?php echo $segunda_dosis; ?>" class="form-control" placeholder="Fecha segunda dosis">
+                        <input type="text" name="fecha_segunda_dosis" value="<?php echo $segunda_dosis; ?>" class="form-control" placeholder="Fecha segunda dosis" readonly>
                     </div>
                     <div class="form-group">
                         <select class="form-select" name="estado_vacunacion">

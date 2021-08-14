@@ -4,7 +4,7 @@ include("db.php");
 
 if(isset($_GET['id'])) {
     $id = $_GET['id'];
-    $query = "DELETE FROM usuario WHERE id_usuario = $id";
+    $query = "EXEC UsuariosProc @id_usuario = '$id', @StatementType = 'Delete'";
     $result = sqlsrv_query($conn, $query);
 
     if (!$result) {
