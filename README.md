@@ -1,6 +1,6 @@
 # Control de Vacunacion COVID-19 / Centrarecursos
 
-Proyecto para la Prueba Técnica de programador de Centrarecursos. El proyecto consiste en una pagina simple para realizar un CRUD para el control y seguimiento de la vacunación de los empleados de una empresa.
+Proyecto para la Prueba Técnica de programador de Centrarecursos. El proyecto consiste en una pagina simple para realizar un CRUD para el control y seguimiento de la vacunación de los empleados de una empresa. Se recomienda que se cuente con conexión a Internet debido a que se utilizaron CDN de bibliotecas de estilos como `Bootstrap` y `Font Awesome`.
 
 ## Servidor de PHP
 
