@@ -8,7 +8,10 @@ Se utilizo un servidor de Apache con `XAMMP` para el servidor de desarrollo. Se 
 
 ## Base de Datos
 
-Se utilizo la Base de Datos MySQL Server, para que la aplicacion se ejecute correctamente se deben crear una base de datos llamada `vacunacioncentrarecursos` y luego correr los scripts de creación de la tabla y los procedimientos almacenados. Ubicados en la carpeta `/database`.
+Se utilizo la Base de Datos MySQL Server, para que la aplicacion se ejecute correctamente se deben crear una base de datos llamada `vacunacioncentrarecursos` y luego correr los scripts de creación de la tabla y los procedimientos almacenados. Ubicados en la carpeta `/database`. También se necesita modificar linea 5 de código del archivo `db.php` modificando el nombre del servidor de la máquina donde se vaya a ejecutar:
+```
+$serverName = "FIGUEROA-OMEN\SQLEXPRESS"; //serverName\instanceName
+```
 
 ## Pruebas de Aplicación
 
